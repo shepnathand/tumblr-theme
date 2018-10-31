@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
+	<title>{Title}</title>
+	<link rel="shortcut icon" href="{Favicon}">
+	<link rel="alternate" type="application/rss+xml" href="{RSS}">
+	{block:Description}
+	<meta name="description" content="{MetaDescription}" />
+	{/block:Description}
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+	<style type="text/css">
+	.navbar {
+		background-color:#3d4348;
+	}
+	.content {
+		margin-top: 40px;
+		width:100%;
+		padding:2px;
+	}
+	.row {
+	    width:90%;
+	    padding-right:5%;
+	    padding-left:5%;
+	}
+	.card-title {
+	}
+	.caption {
+		font-size:75%;
+	}
+	.avatar-circle {
+		border-radius: 50%;
+	}
+	.avatar-square {
+		border-radius: 5px;
+	}
+	.post {
+	    width: 220px;
+	    margin: 20px;
+	    position: center;
+	}
+	.card-body {
+	    max-width: 220px;
+	}
+
+	@media screen and (max-width: 800px) {
+	    .content {
+	        width:95vw;
+	        padding:1px;
+	        margin:auto;
+	    }
+		.post {
+			width:90%;
+			padding:5%;
+			margin:auto;
+		}
+		#masthead {
+		    margin:auto;
+		}
+	}
+</style>
+</head>
+<body>
+	<nav class="navbar navbar-expand-lg navbar-dark">
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse" id="navbarSupportedContent">
+			<ul class="navbar-nav mr-auto">
+				<li class="nav-icon active">
+					<a class="nav-link" rel="author" href="/">{Title} <span class="sr-only">(current)</span></a>
+					<li class="nav-item">
+						<a class="nav-link" href="/ask"><span>ask</span></a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="/archive/"><span>archive</span></a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="https://www.instagram.com/uccello_medio/"><span>instagram</span></a>
+					</li>
+				</li>
+			</ul>
+		</div>
+	</nav>
+		<div class="content">
+			<div class="container-fluid">
+				<div class="row">
+					<div class="col-lg-3">
+						<div class="post">
+							<article id="masthead" class="about" role="banner" style="text-align:center;">
+								<span id="masthead-effect" class="special-effect persistent-effect">
+								</span>
+								<div id="site-info" class="widget">
+									{block:ShowAvatar}
+									<div id="avatar" class="widget">
+										<a href="/" title="Home">
+											<img class="avatar-{AvatarShape}" src="{PortraitURL-128}">
+										</a>
+									</div>
+									{/block:ShowAvatar}
+									{block:ShowTitle}
+									<h3 class="links-normal">
+										<a href="/" title="Home" id="site-name" role="heading" style="color:#090909;text-decoration:none;">
+											{Title}
+										</a>
+									</h3>
+									{/block:ShowTitle}
+									{block:Description}
+									<p id="description">{Description}</p>
+									{/block:Description}
+								</div>
+							</article>
+						</div>
+					</div>
+					{block:Posts}
+
+					{block:Text}
+					<div class="col-lg-3">
+						<div class="post">
+							<div class="card-body">
+								<div class="post text">
+									{block:Title}
+									<h3><a href="{Permalink}">{Title}</a></h3>
+									{/block:Title}{Body}
+								</div>
+							</div>
+						</div>
+					</div>
+					{/block:Text}
+
+					{block:Photo}
+					<div class="col-lg-3">
+						<div class="post">
+							<a href="{Permalink}"><img class="card-img-top" src="{PhotoURL-500}" alt="Card image cap"></a>
+							<div class="card-body">
+								<div class="card-title caption">{Caption}</div>
+                            </div>
+						</div>
+					</div>
+					{/block:Photo}
+
+					{block:Panorama}
+					<div class="col-lg-3">
+						<div class="post">
+							<div class="card-body">
+								<div class="post panorama">
+									{LinkOpenTag}
+									<img src="{PhotoURL-Panorama}">
+									{LinkCloseTag}
+									{block:Caption}
+									<div class="caption">{Caption}</div>
+									{/block:Caption}
+								</div>
+							</div>
+						</div>
+					</div>
+					{/block:Panorama}
+
+					{block:Photoset}
+					<div class="col-lg-3">
+						<div class="post">
+							<div class="card-image-top">
+								<a href="{Permalink}">{Photoset}</a>
+							</div>
+							{block:Caption}
+							<div class="card-body">
+								<div class="card-title caption">{Caption}</div>
+							</div>
+							{/block:Caption}
+						</div>
+					</div>
+					{/block:Photoset}
+
+					{block:Quote}
+					<div class="col-lg-3">
+						<div class="post">
+							<div class="card-body">
+								<blockquote class="blockquote">
+									<p>{Quote}</p>
+									<footer class="blockquote-footer">{Source}</footer>
+								</blockquote>
+							</div>
+						</div>
+					</div>
+					{/block:Quote}
+
+					{block:Link}
+					<div class="col-lg-3">
+						<div class="post">
+							<div class="card-body">
+								<div class="post link">
+									<a href="{URL}" class="link" {Target}>{Name}</a>
+										{block:Description}
+										<div class="description">{Description}</div>
+										{/block:Description}
+								</div>
+							</div>
+						</div>
+					</div>
+					{/block:Link}
+
+					{block:Chat}
+					<div class="col-lg-3">
+						<div class="post">
+							<div class="card-body">
+								<div class="post chat">
+									{block:Title}
+									<h3><a href="{Permalink}">{Title}</a></h3>
+									{/block:Title}
+									<ul class="chat">
+										{block:Lines}
+										<div class="{Alt} user_{UserNumber}">
+											{block:Label}
+											<span class="label">{Label}</span>
+											{/block:Label}{Line}
+										</div>
+										{/block:Lines}
+									</ul>
+								</div>
+							</div>
+						</div>
+					</div>
+					{/block:Chat}
+
+					{block:Video}
+					<div class="col-lg-3">
+						<div class="post">
+							<div class="card-body">
+								<div class="post video">
+									{Video-500}{block:Caption}
+									<div class="caption">{Caption}</div>
+									{/block:Caption}
+								</div>
+							</div>
+						</div>
+					</div>
+					{/block:Video}
+
+					{block:Audio}
+					<div class="col-lg-3">
+						<div class="post">
+							<div class="card-body">
+								<div class="post audio">
+									{AudioEmbed}{block:Caption}
+									<div class="caption">{Caption}</div>
+									{/block:Caption}
+								</div>
+							</div>
+						</div>
+					</div>
+					{/block:Audio}
+                    
+					{/block:Posts}
+					
+				</div>
+			</div>
+			<div class="footer" style="position:relative;bottom:0px;z-index:7;">
+						<p class="text-center">
+	           {block:PreviousPage}
+	           <a href="{PreviousPage}" class="btn btn-secondary">Previous</a>
+	           {/block:PreviousPage}
+	           {block:NextPage}
+	           <a href="{NextPage}" class="btn btn-secondary">Next</a>
+	           {/block:NextPage}
+	           </p>
+            </div>
+        </div>
+		<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+</body>
+</html>
