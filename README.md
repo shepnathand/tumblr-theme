@@ -1,3 +1,2 @@
 # tumblr-theme
-
-A responsive tumblr theme.
+A responsive theme for tumblr.
